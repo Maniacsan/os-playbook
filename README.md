@@ -2,6 +2,8 @@
 
 # Operating System Ansible Playbook
 
+## DO NOT USE YET, THIS IS BEING CONFIGURED
+
 These playbooks allow you to set up your Mac and Windows systems (with Linux support planned in the future). They enable you to configure packages and various aspects of each operating system. Since both platforms can be challenging to automate, there may be some tasks that cannot be fully automated.
 
 ## Table of Contents
