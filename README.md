@@ -10,7 +10,7 @@ These playbooks allow you to set up your Mac and Windows systems (with Linux sup
 
 ---
 
-## Mac
+## Windows
 
 ### Installation
 Copy and paste the code below into your PowerShell terminal to get your Windows machine ready to work with Ansible.
