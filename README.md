@@ -6,6 +6,8 @@
 
 These playbooks allow you to set up your Mac and Windows systems (with Linux support planned in the future). They enable you to configure packages and various aspects of each operating system. Since both platforms can be challenging to automate, there may be some tasks that cannot be fully automated.
 
+These use playbooks from [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook) and [AlexNabokikh/windows-playbook](https://github.com/AlexNabokikh/windows-playbook)  but their default.config.yml use more general configurations AND are commented out so you can build your own configuration while having an example to use.
+
 ## Table of Contents
 - [Mac](#mac)
 - [Windows](#windows)
@@ -17,6 +19,9 @@ These playbooks allow you to set up your Mac and Windows systems (with Linux sup
 
 ### Installation
 1. Ensure Apple's command line tools are installed (xcode-select --install to launch the installer).
+```sh
+
+```
 2. Install homebrew
 
 ## Windows
