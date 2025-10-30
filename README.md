@@ -56,6 +56,10 @@ $file = "$env:temp\setup.ps1"
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
 2. Install pip (if needed)
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py  
+python3 get-pip.py --user  
+```
 3. Install Ansible via pip:
    1. Upgrade Pip: `pip3 install --upgrade pip`
    2. Install Ansible: `pip3 install ansible`
