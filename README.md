@@ -18,21 +18,26 @@ These use playbooks from [geerlingguy/mac-dev-playbook](https://github.com/geerl
 ## Mac
 
 ### Installation
-1. Ensure Apple's command line tools are installed (xcode-select --install to launch the installer).
-```sh
 
-```
-2. Install homebrew
+  1. Ensure Apple's command line tools are installed.
+`xcode-select --install` to launch the installer
+
+  2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
+
+     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"`
+     2. Upgrade Pip: `sudo pip3 install --upgrade pip`
+     3. Install Ansible: `pip3 install ansible`
+
+  3. Clone or download this repository to your local drive.
+  4. Run `./mac.sh` to run the Mac playbook inside this directory. This will also install the required Ansibles roles.
+  5. You can also do the following in the `mac-playbook/` to do the following:
+      1. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+      2. Run `ansible-playbook main.yml --ask-become-pass` inside this directory. Enter your macOS account password when prompted for the 'BECOME' password.
+
+> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
 ## Windows
 
 ### Installation
-Copy and paste the code below into your PowerShell terminal to get your Windows machine ready to work with Ansible.
-```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url = "https://raw.githubusercontent.com/AlexNabokikh/windows-playbook/master/setup.ps1"
-$file = "$env:temp\setup.ps1"
 
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
-powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
