@@ -2,22 +2,28 @@
 
 # Operating System Ansible Playbook
 
-## DO NOT USE YET, THIS IS BEING CONFIGURED
+## ⚠️ DO NOT USE ⚠️
 
-These playbooks allow you to set up your Mac and Windows systems (with Linux support planned in the future). They enable you to configure packages and various aspects of each operating system. Since both platforms can be challenging to automate, there may be some tasks that cannot be fully automated.
+These playbooks allow you to set up your macOS and Windows systems (with Linux support planned in the future). They enable you to configure packages and various aspects of each operating system. Since both platforms can be challenging to automate, there may be some tasks that cannot be fully automated.
 
 These use playbooks from [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook) and [AlexNabokikh/windows-playbook](https://github.com/AlexNabokikh/windows-playbook)  but their default.config.yml use more general configurations AND are commented out so you can build your own configuration while having an example to use.
 
 ## Table of Contents
-- [Mac](#mac)
+- [macOS](#mac)
+  - [Installation](#installation-macos)
+  - [Features](#features-macos)
+  - [Overriding Defaults](#overriding-defaults-macos)
 - [Windows](#windows)
+  - [Installation](#installation-windows)
+  - [Features](#features-windows)
+  - [Overriding Defaults](#overriding-defaults-windows)
 
 ---
 
 
 ## Mac
 
-### Installation
+### Installation {#installation-macos}
 
   1. Ensure Apple's command line tools are installed.
 `xcode-select --install` to launch the installer
@@ -32,6 +38,33 @@ These use playbooks from [geerlingguy/mac-dev-playbook](https://github.com/geerl
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
-## Windows
+## Windows 
 
-### Installation
+### Installation {#installation-windows}
+
+### Prepare your Windows host ⏲
+
+#### **This playbook was tested on Windows 10 2004 and Windows 11 21H2 (Pro, Ent). Other versions may work but have not tried.**
+
+Copy and paste the code below into your PowerShell terminal to get your Windows machine ready to work with Ansible.
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$url = "https://raw.githubusercontent.com/Maniacsan/os-playbook/master/windows-playbook/setup.ps1"
+$file = "$env:temp\setup.ps1"
+
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
+```
+
+### Ansible Control node 🕹
+
+1. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
+
+   1. Upgrade Pip: `pip3 install --upgrade pip`
+   2. Install Ansible: `pip3 install ansible`
+
+2. Clone or download this repository to your local drive.
+3. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible collections.
+4. Add the IP address and credentials of your Windows machine into the `inventory` file
+5. Run `ansible-playbook main.yml` inside this directory.
