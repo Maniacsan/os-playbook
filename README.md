@@ -46,8 +46,7 @@ These use playbooks from [geerlingguy/mac-dev-playbook](https://github.com/geerl
 
 #### **This playbook was tested on Windows 10 2004 and Windows 11 21H2 (Pro, Ent). Other versions may work but have not tried.**
 
-Copy and paste the code below into your PowerShell terminal to get your Windows machine ready to work with Ansible.
-
+1. Copy and paste the code below into your PowerShell terminal to get your Windows machine ready to work with Ansible.
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/Maniacsan/os-playbook/master/windows-playbook/setup.ps1"
@@ -56,15 +55,17 @@ $file = "$env:temp\setup.ps1"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
-
-### Ansible Control node 🕹
-
-1. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
-
+2. Install pip (if needed)
+3. Install Ansible via pip:
    1. Upgrade Pip: `pip3 install --upgrade pip`
    2. Install Ansible: `pip3 install ansible`
-
 2. Clone or download this repository to your local drive.
-3. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible collections.
+3. Run `ansible-galaxy install -r requirements.yml` inside `windows-playbook/` directory to install required Ansible roles.
 4. Add the IP address and credentials of your Windows machine into the `inventory` file
-5. Run `ansible-playbook main.yml` inside this directory.
+5. Run `ansible-playbook main.yml` inside `windows-playbook/` directory.
+
+## License
+
+This software is available under the following licenses:
+
+- **[MIT](https://github.com/Maniacsan/os-playbook/blob/master/LICENSE)**
