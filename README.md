@@ -12,6 +12,13 @@ These playbooks allow you to set up your Mac and Windows systems (with Linux sup
 
 ---
 
+
+## Mac
+
+### Installation
+1. Ensure Apple's command line tools are installed (xcode-select --install to launch the installer).
+2. Install homebrew
+
 ## Windows
 
 ### Installation
